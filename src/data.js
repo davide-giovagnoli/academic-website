@@ -5,8 +5,8 @@ export const profile = {
   bio: "Hi, I'm Davide",
   email: "d.giovagnoli@unibo.it",
   affiliation: "Department of Mathematics, University of Bologna, Piazza di Porta San Donato, 5, Bologna, Italy",
-  photo: "public/Cv_photo.jpg",
-  cv: "public/CV_DG_Oct_12.pdf",
+  photo: "/Cv_photo.jpg",
+  cv: "/CV_DG_Oct_12.pdf",
   links: [ {label:"Google Scholar", url: "https://scholar.google.com/citations?user=QVb1vlsAAAAJ&hl=it&authuser=1" },//
           {label: "CVGMT page", url: "https://cvgmt.sns.it/person/4847/"} ],
 };
