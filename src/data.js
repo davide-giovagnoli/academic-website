@@ -1,14 +1,23 @@
-// EDIT THIS FILE to update your profile and publications.
+
 export const profile = {
   name: "Davide Giovagnoli",
   role: "PhD in Mathematics",
-  bio: "Hi, I'm Davide",
+  bio: "Hi, I'm Davide.",
   email: "d.giovagnoli@unibo.it",
-  affiliation: "Department of Mathematics, University of Bologna, Piazza di Porta San Donato, 5, Bologna, Italy",
+  affiliation:
+    "Department of Mathematics, University of Bologna, Piazza di Porta San Donato 5, Bologna, Italy",
   photo: "/profile-photo.jpg",
   cv: "/davide-giovagnoli-cv.pdf",
-  links: [ {label:"Google Scholar", url: "https://scholar.google.com/citations?user=QVb1vlsAAAAJ&hl=it&authuser=1" },//
-          {label: "CVGMT page", url: "https://cvgmt.sns.it/person/4847/"} ],
+  links: [
+    {
+      label: "Google Scholar",
+      url: "https://scholar.google.com/citations?user=QVb1vlsAAAAJ&hl=it",
+    },
+    {
+      label: "CVGMT",
+      url: "https://cvgmt.sns.it/person/4847/",
+    },
+  ],
 };
 
 
@@ -144,7 +153,7 @@ export const publications = [
     title:
       "A Note on the Rigidity of Solutions to Parabolic Fully Nonlinear Degenerate Equations",
     authors: "D. Giovagnoli, M. Talluri, J. M. Urbano",
-    venue: "Manuscript in preparation",
+    venue: "Submitted",
     url: "",
   },
 
