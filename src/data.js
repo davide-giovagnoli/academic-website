@@ -20,10 +20,7 @@ export const profile = {
   ],
 };
 
-
 export const publications = [
-  // PREPRINTS
-
   {
     year: "2026",
     title:
@@ -72,7 +69,7 @@ export const publications = [
   {
     year: "2025",
     title:
-      "C^{1,α} Regularity for Fractional p-Harmonic Functions",
+      "C¹,α Regularity for Fractional p-Harmonic Functions",
     authors: "D. Giovagnoli, D. Jesus, L. Silvestre",
     venue: "Preprint, arXiv:2509.26565",
     url: "https://arxiv.org/abs/2509.26565",
@@ -95,8 +92,6 @@ export const publications = [
     venue: "Preprint, arXiv:2504.12912",
     url: "https://arxiv.org/abs/2504.12912",
   },
-
-  // PUBLISHED ARTICLES
 
   {
     year: "2026",
@@ -135,8 +130,6 @@ export const publications = [
       "Annali di Matematica Pura ed Applicata 204, 427–445 (2025)",
     url: "https://doi.org/10.1007/s10231-024-01490-8",
   },
-
-  // SURVEYS AND BOOK PROJECTS
 
   {
     year: "2025",
