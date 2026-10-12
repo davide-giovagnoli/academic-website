@@ -44,7 +44,7 @@ export default function App() {
       <header className="header">
         <div className="container header-inner">
           <a className="monogram" href="#profile">
-            DG
+          
           </a>
 
           <nav className="desktop-nav">
