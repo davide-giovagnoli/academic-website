@@ -63,7 +63,7 @@ export const publications = [
   {
     year: "2025",
     title:
-      "C¹,α Regularity for Fractional p-Harmonic Functions",
+      "C^{1,α} Regularity for Fractional p-Harmonic Functions",
     authors: "D. Giovagnoli, D. Jesus, L. Silvestre",
     venue: "Preprint, arXiv:2509.26565",
     url: "https://arxiv.org/abs/2509.26565",
