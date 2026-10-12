@@ -1,8 +1,12 @@
 import { useMemo, useState } from "react";
 import { Download, ExternalLink, GraduationCap, Mail, MapPin, Menu, Search, X } from "lucide-react";
-import { profile, publications} from "./data";
+import { profile, publications } from "./data";
 
-const nav = [["Profile", "profile"], ["Research", "research"], ["Publications", "publications"], ["Contact", "contact"]];
+const nav = [
+  ["Profile", "profile"],
+  ["Publications", "publications"],
+  ["Contact", "contact"]
+];
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -35,13 +39,6 @@ export default function App() {
           </div>
         </div>
         <div className="portrait-frame"><img src={profile.photo} alt={`Portrait of ${profile.name}`} /></div>
-      </section>
-
-      <section id="research" className="research-section">
-        <div className="container research-grid">
-          <div><p className="section-label">Research</p><h2>Research interests</h2></div>
-          <div className="interest-grid">{researchInterests.map((item,i) => <article className="interest-card" key={item}><span>0{i+1}</span><h3>{item}</h3></article>)}</div>
-        </div>
       </section>
 
       <section id="publications" className="container publications-section">
