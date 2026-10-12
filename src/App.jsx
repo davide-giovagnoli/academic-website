@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Download, ExternalLink, GraduationCap, Mail, MapPin, Menu, Search, X } from "lucide-react";
-import { profile, publications, researchInterests } from "./data";
+import { profile, publications} from "./data";
 
 const nav = [["Profile", "profile"], ["Research", "research"], ["Publications", "publications"], ["Contact", "contact"]];
 
@@ -10,7 +10,7 @@ export default function App() {
   const filtered = useMemo(() => {
     const q = query.toLowerCase().trim();
     if (!q) return publications;
-    return publications.filter((p) => [p.year, p.title, p.authors, p.venue, ...p.tags].join(" ").toLowerCase().includes(q));
+    return publications.filter((p) => [p.year, p.title, p.authors, p.venue].join(" ").toLowerCase().includes(q));
   }, [query]);
 
   return <div className="site-shell">
