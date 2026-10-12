@@ -1,17 +1,14 @@
 // EDIT THIS FILE to update your profile and publications.
 export const profile = {
   name: "Davide Giovagnoli",
-  role: "PhD Candidate in Mathematics",
-  bio: "I work on partial differential equations, regularity theory, and the calculus of variations, with a particular interest in nonlocal and geometric problems.",
-  email: "davide.giovagnoli@example.edu",
-  affiliation: "Department of Mathematics, University",
-  photo: "/profile-photo.jpg",
+  role: "PhD in Mathematics",
+  bio: "Hi, I'm Davide",
+  email: "d.giovagnoli@unibo.it",
+  affiliation: "Department of Mathematics, University of Bologna",
+  photo: "Cv_photo/profile-photo.jpg",
   cv: "/davide-giovagnoli-cv.pdf",
-  links: [
-    // { label: "ORCID", url: "https://orcid.org/..." },
-    // { label: "Google Scholar", url: "https://scholar.google.com/..." },
-    // { label: "arXiv", url: "https://arxiv.org/a/..." },
-  ],
+  links: [ {label:"Google Scholar", url: "https://scholar.google.com/citations?user=QVb1vlsAAAAJ&hl=it&authuser=1" },//
+          {label: "CVGMT page", url: "https://cvgmt.sns.it/person/4847/"} ],
 };
 
 export const researchInterests = [
