@@ -5,7 +5,7 @@ export const profile = {
   bio: "Hi, I'm Davide.",
   email: "d.giovagnoli@unibo.it",
   affiliation:
-    "Department of Mathematics, University of Bologna, Piazza di Porta San Donato 5, Bologna, Italy",
+    "Department of Mathematics, University of Bologna,\n Piazza di Porta San Donato 5, Bologna, Italy",
   photo: "/profile-photo.jpg",
   cv: "/davide-giovagnoli-cv.pdf",
   links: [
