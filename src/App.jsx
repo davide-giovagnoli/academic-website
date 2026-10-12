@@ -107,13 +107,6 @@ export default function App() {
                 Download CV
               </a>
 
-              <a className="button secondary" href={`mailto:${profile.email}`}>
-                <Mail size={17} />
-                Contact me
-              </a>
-            </div>
-          </div>
-
           <div className="portrait-frame">
             <img src={profile.photo} alt={`Portrait of ${profile.name}`} />
           </div>
