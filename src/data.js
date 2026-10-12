@@ -5,7 +5,7 @@ export const profile = {
   bio: "Hi, I'm Davide",
   email: "d.giovagnoli@unibo.it",
   affiliation: "Department of Mathematics, University of Bologna",
-  photo: "Cv_photo/profile-photo.jpg",
+  photo: "Public/Cv_photo.jpg",
   cv: "/davide-giovagnoli-cv.pdf",
   links: [ {label:"Google Scholar", url: "https://scholar.google.com/citations?user=QVb1vlsAAAAJ&hl=it&authuser=1" },//
           {label: "CVGMT page", url: "https://cvgmt.sns.it/person/4847/"} ],
