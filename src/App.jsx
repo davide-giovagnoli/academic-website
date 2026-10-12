@@ -23,10 +23,7 @@ export default function App() {
 
   const filtered = useMemo(() => {
     const q = query.toLowerCase().trim();
-
-    if (!q) {
-      return publications;
-    }
+    if (!q) return publications;
 
     return publications.filter((publication) =>
       [
@@ -35,6 +32,7 @@ export default function App() {
         publication.authors,
         publication.venue,
       ]
+        .filter(Boolean)
         .join(" ")
         .toLowerCase()
         .includes(q)
@@ -45,13 +43,13 @@ export default function App() {
     <div className="site-shell">
       <header className="header">
         <div className="container header-inner">
-          #profile
+          <a className="monogram" href="#profile">
             DG
           </a>
 
           <nav className="desktop-nav">
             {nav.map(([label, id]) => (
-              {`#${id}`}
+              <a key={id} href={`#${id}`}>
                 {label}
               </a>
             ))}
@@ -59,8 +57,9 @@ export default function App() {
 
           <button
             className="menu-button"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
+            type="button"
+            onClick={() => setMenuOpen((open) => !open)}
+            aria-label="Toggle navigation menu"
           >
             {menuOpen ? <X /> : <Menu />}
           </button>
@@ -69,7 +68,10 @@ export default function App() {
         {menuOpen && (
           <nav className="mobile-nav">
             {nav.map(([label, id]) => (
-              {`#${id}`} => setMenuOpen(false)}
+              <a
+                key={id}
+                href={`#${id}`}
+                onClick={() => setMenuOpen(false)}
               >
                 {label}
               </a>
@@ -95,12 +97,17 @@ export default function App() {
             <p className="lead">{profile.bio}</p>
 
             <div className="actions">
-              {profile.cv}
+              <a
+                className="button primary"
+                href={profile.cv}
+                target="_blank"
+                rel="noreferrer"
+              >
                 <Download size={17} />
                 Download CV
               </a>
 
-              {`mailto:${profile.email}`}
+              <a className="button secondary" href={`mailto:${profile.email}`}>
                 <Mail size={17} />
                 Contact me
               </a>
@@ -108,14 +115,11 @@ export default function App() {
           </div>
 
           <div className="portrait-frame">
-            {profile.photo}
+            <img src={profile.photo} alt={`Portrait of ${profile.name}`} />
           </div>
         </section>
 
-        <section
-          id="publications"
-          className="container publications-section"
-        >
+        <section id="publications" className="container publications-section">
           <div className="section-head">
             <div>
               <p className="section-label">Research output</p>
@@ -125,9 +129,11 @@ export default function App() {
             <label className="search">
               <Search size={17} />
               <input
+                type="search"
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder="Search publications"
+                aria-label="Search publications"
               />
             </label>
           </div>
@@ -147,7 +153,13 @@ export default function App() {
                 </div>
 
                 {publication.url && (
-                  {publication.url}
+                  <a
+                    className="external"
+                    href={publication.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Open ${publication.title}`}
+                  >
                     <ExternalLink size={19} />
                   </a>
                 )}
@@ -155,7 +167,7 @@ export default function App() {
             ))}
           </div>
 
-          {!filtered.length && (
+          {filtered.length === 0 && (
             <p className="empty">No publications found.</p>
           )}
         </section>
@@ -168,7 +180,7 @@ export default function App() {
             </div>
 
             <div className="contact-details">
-              {`mailto:${profile.email}`}
+              <a href={`mailto:${profile.email}`}>
                 <Mail size={17} />
                 {profile.email}
               </a>
@@ -178,13 +190,20 @@ export default function App() {
                 {profile.affiliation}
               </p>
 
-              <div className="social-links">
-                {(profile.links || []).map((link) => (
-                  {link.url}
-                    {link.label}
-                  </a>
-                ))}
-              </div>
+              {profile.links?.length > 0 && (
+                <div className="social-links">
+                  {profile.links.map((link) => (
+                    <a
+                      key={link.label}
+                      href={link.url}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              )}
 
               <small>
                 © {new Date().getFullYear()} {profile.name}
@@ -196,3 +215,4 @@ export default function App() {
     </div>
   );
 }
+
