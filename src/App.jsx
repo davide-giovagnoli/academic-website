@@ -9,7 +9,11 @@ import {
   Search,
   X,
 } from "lucide-react";
-import { profile, publications } from "./data";
+import {
+  profile,
+  publications,
+  surveysAndBooks,
+} from "./data";
 
 const nav = [
   ["Profile", "profile"],
@@ -38,7 +42,26 @@ export default function App() {
         .includes(q)
     );
   }, [query]);
+  
+const filteredSurveysAndBooks = useMemo(() => {
+  const q = query.toLowerCase().trim();
 
+  if (!q) return surveysAndBooks;
+
+  return surveysAndBooks.filter((item) =>
+    [
+      item.year,
+      item.title,
+      item.authors,
+      item.venue,
+      ...item.tags,
+    ]
+      .join(" ")
+      .toLowerCase()
+      .includes(q)
+  );
+}, [query]);
+  
   return (
     <div className="site-shell">
       <header className="header">
@@ -172,6 +195,32 @@ export default function App() {
           )}
         </section>
 
+<div className="subsection-head">
+  <p className="section-label">Expository work</p>
+  <h2>Surveys and Books</h2>
+</div>
+
+<div className="publication-list">
+  {filteredSurveysAndBooks.map((item, index) => (
+    <article
+      className="publication"
+      key={`${item.title}-${index}`}
+    >
+      <div className="year">{item.year}</div>
+
+      <div>
+        <h3>{item.title}</h3>
+        <p>{item.authors}</p>
+        <p className="venue">{item.venue}</p>
+
+        <div className="tags">
+          {item.tags.map((tag) => (
+            <span key={tag}>{tag}</span>
+          ))}
+        </div>
+      </div>
+
+        
         <section id="contact" className="contact-section">
           <div className="container contact-grid">
             <div>
