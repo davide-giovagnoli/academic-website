@@ -184,33 +184,35 @@ export default function App() {
 
                 <div>
                   <h3>{publication.title}</h3>
-                  <p>{publication.authors}</p>
-                  <p className="venue">
-                    {publication.venue}
-                  </p>
+      Name="empty">
+              No publications found.
+            </p>
+          )}
 
-             
+          <div className="subsection-head">
+            <p className="section-label">
+              Expository work
+            </p>
 
-                {publication.url && (
-                  <a
-                    className="external"
-                    href={publication.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={`Open ${publication.title}`}
-                  >
-                    <ExternalLink size={19} />
-                  </a>
-                )}
-              </article>
-            ))}
+            <h2>Surveys and Books</h2>
           </div>
 
-          {filtered.length === 0 && (
-                          <p>{item.authors}</p>
-                  <p className="venue">{item.venue}</p>
+          <div className="publication-list">
+            {filteredSurveysAndBooks.map((item, index) => (
+              <article
+                className="publication"
+                key={`${item.title}-${index}`}
+              >
+                <div className="year">
+                  {item.year}
+                </div>
 
-                  
+                <div>
+                  <h3>{item.title}</h3>
+                  <p>{item.authors}</p>
+                  <p className="venue">
+                    {item.venue}
+                  </p>
                 </div>
 
                 {item.url && (
@@ -236,7 +238,7 @@ export default function App() {
                 Contact
               </p>
 
-              <h2> .</h2>
+              <h2>Get in touch.</h2>
             </div>
 
             <div className="contact-details">
