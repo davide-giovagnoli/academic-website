@@ -9,11 +9,7 @@ import {
   Search,
   X,
 } from "lucide-react";
-import {
-  profile,
-  publications,
-  surveysAndBooks,
-} from "./data";
+import { profile, publications, surveysAndBooks } from "./data";
 
 const nav = [
   ["Profile", "profile"],
@@ -68,7 +64,7 @@ export default function App() {
       <header className="header">
         <div className="container header-inner">
           <a className="monogram" href="#profile">
-            
+            DG
           </a>
 
           <nav className="desktop-nav">
@@ -178,41 +174,28 @@ export default function App() {
                 className="publication"
                 key={`${publication.title}-${index}`}
               >
-                <div className="year">
-                  {publication.year}
-                </div>
+                <div className="year">{publication.year}</div>
 
                 <div>
                   <h3>{publication.title}</h3>
-                  <p className="empty">
-              No publications found.
-            </p>
-          )}
+                  <p>{publication.authors}</p>
+                  <p className="venue">{publication.venue}</p>
+                </div>
 
-          <div className="subsection-head">
-            <p className="section-label">
-              Expository work
-            </p>
-
-            <h2>Surveys and Books</h2>
-          </div>
-
-          <div className="publication-list">
-            {filteredSurveysAndBooks.map((item, index) => (
-              <article
-                className="publication"
+                {publication.url && (
+                  <a
+                    className="external"
+                    href={publication.url}
+                    target="_blank"
+               assName="publication"
                 key={`${item.title}-${index}`}
               >
-                <div className="year">
-                  {item.year}
-                </div>
+                <div className="year">{item.year}</div>
 
                 <div>
                   <h3>{item.title}</h3>
                   <p>{item.authors}</p>
-                  <p className="venue">
-                    {item.venue}
-                  </p>
+                  <p className="venue">{item.venue}</p>
                 </div>
 
                 {item.url && (
@@ -224,21 +207,18 @@ export default function App() {
             ))}
           </div>
 
-           {filteredSurveysAndBooks.length === 0 && (
-              <p className="empty">
-                No surveys or books found.
-              </p>
-              )}
+          {filteredSurveysAndBooks.length === 0 && (
+            <p className="empty">
+              No surveys or books found.
+            </p>
+          )}
         </section>
 
         <section id="contact" className="contact-section">
           <div className="container contact-grid">
             <div>
-              <p className="section-label light">
-                Contact
-              </p>
-
-              <h2> .</h2>
+              <p className="section-label light">Contact</p>
+              <h2>Get in touch.</h2>
             </div>
 
             <div className="contact-details">
