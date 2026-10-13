@@ -2,7 +2,7 @@
 export const profile = {
   name: "Davide Giovagnoli",
   role: "PhD in Mathematics",
-  bio: "Hi, I'm currently a Phd candidate at the University of Bologna.\nMy PhD Thesis defence is scheduled November 16th.\nYou can reach me at d.giovagnoli@unibo.it",
+  bio: "Hi, I'm currently a Phd student at the University of Bologna.\nMy PhD Thesis defence is scheduled November 16th.\nYou can reach me at d.giovagnoli@unibo.it",
   email: "d.giovagnoli@unibo.it",
   affiliation:
     "Department of Mathematics, University of Bologna,\n Piazza di Porta San Donato 5, Bologna, Italy",
