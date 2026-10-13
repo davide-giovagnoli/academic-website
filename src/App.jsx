@@ -44,7 +44,7 @@ export default function App() {
       <header className="header">
         <div className="container header-inner">
           <a className="monogram" href="#profile">
-          
+            DG
           </a>
 
           <nav className="desktop-nav">
@@ -106,6 +106,13 @@ export default function App() {
                 <Download size={17} />
                 Download CV
               </a>
+
+              <a className="button secondary" href={`mailto:${profile.email}`}>
+                <Mail size={17} />
+                Contact me
+              </a>
+            </div>
+          </div>
 
           <div className="portrait-frame">
             <img src={profile.photo} alt={`Portrait of ${profile.name}`} />
@@ -208,4 +215,3 @@ export default function App() {
     </div>
   );
 }
-
