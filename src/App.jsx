@@ -21,50 +21,55 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [query, setQuery] = useState("");
 
-  const filtered = useMemo(() => {
-    const q = query.toLowerCase().trim();
+  const matchesQuery = (item) =>
+    [item.year, item.title, item.authors, item.venue]
+      .filter(Boolean)
+      .join(" ")
+      .toLowerCase()
+      .includes(query.toLowerCase().trim());
 
-    if (!q) return publications;
+  const filtered = useMemo(
+    () => (query.trim() ? publications.filter(matchesQuery) : publications),
+    [query]
+  );
 
-    return publications.filter((publication) =>
-      [
-        publication.year,
-        publication.title,
-        publication.authors,
-        publication.venue,
-      ]
-        .filter(Boolean)
-        .join(" ")
-        .toLowerCase()
-        .includes(q)
-    );
-  }, [query]);
+  const filteredSurveysAndBooks = useMemo(
+    () =>
+      query.trim()
+        ? surveysAndBooks.filter(matchesQuery)
+        : surveysAndBooks,
+    [query]
+  );
 
-  const filteredSurveysAndBooks = useMemo(() => {
-    const q = query.toLowerCase().trim();
+  const renderEntry = (item, index) => (
+    <article className="publication" key={`${item.title}-${index}`}>
+      <div className="year">{item.year}</div>
 
-    if (!q) return surveysAndBooks;
+      <div>
+        <h3>{item.title}</h3>
+        <p>{item.authors}</p>
+        <p className="venue">{item.venue}</p>
+      </div>
 
-    return surveysAndBooks.filter((item) =>
-      [
-        item.year,
-        item.title,
-        item.authors,
-        item.venue,
-      ]
-        .filter(Boolean)
-        .join(" ")
-        .toLowerCase()
-        .includes(q)
-    );
-  }, [query]);
+      {item.url && (
+        <a
+          className="external"
+          href={item.url}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={`Open ${item.title}`}
+        >
+          <ExternalLink size={19} />
+        </a>
+      )}
+    </article>
+  );
 
   return (
     <div className="site-shell">
       <header className="header">
         <div className="container header-inner">
           <a className="monogram" href="#profile">
-            DG
           </a>
 
           <nav className="desktop-nav">
@@ -157,7 +162,6 @@ export default function App() {
 
             <label className="search">
               <Search size={17} />
-
               <input
                 type="search"
                 value={query}
@@ -169,48 +173,24 @@ export default function App() {
           </div>
 
           <div className="publication-list">
-            {filtered.map((publication, index) => (
-              <article
-                className="publication"
-                key={`${publication.title}-${index}`}
-              >
-                <div className="year">{publication.year}</div>
+            {filtered.map(renderEntry)}
+          </div>
 
-                <div>
-                  <h3>{publication.title}</h3>
-                  <p>{publication.authors}</p>
-                  <p className="venue">{publication.venue}</p>
-                </div>
+          {filtered.length === 0 && (
+            <p className="empty">No publications found.</p>
+          )}
 
-                {publication.url && (
-                  <a
-                    className="external"
-                    href={publication.url}
-                    target="_blank"
-               assName="publication"
-                key={`${item.title}-${index}`}
-              >
-                <div className="year">{item.year}</div>
+          <div className="subsection-head">
+            <p className="section-label">Expository work</p>
+            <h2>Surveys and Books</h2>
+          </div>
 
-                <div>
-                  <h3>{item.title}</h3>
-                  <p>{item.authors}</p>
-                  <p className="venue">{item.venue}</p>
-                </div>
-
-                {item.url && (
-                  {item.url}
-                    <ExternalLink size={19} />
-                  </a>
-                )}
-              </article>
-            ))}
+          <div className="publication-list">
+            {filteredSurveysAndBooks.map(renderEntry)}
           </div>
 
           {filteredSurveysAndBooks.length === 0 && (
-            <p className="empty">
-              No surveys or books found.
-            </p>
+            <p className="empty">No surveys or books found.</p>
           )}
         </section>
 
@@ -218,11 +198,10 @@ export default function App() {
           <div className="container contact-grid">
             <div>
               <p className="section-label light">Contact</p>
-              <h2>Get in touch.</h2>
             </div>
 
             <div className="contact-details">
-              {`mailto:${profile.email}`}
+              <a href={`mailto:${profile.email}`}>
                 <Mail size={17} />
                 {profile.email}
               </a>
@@ -235,7 +214,12 @@ export default function App() {
               {profile.links?.length > 0 && (
                 <div className="social-links">
                   {profile.links.map((link) => (
-                    {link.url}
+                    <a
+                      key={link.label}
+                      href={link.url}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       {link.label}
                     </a>
                   ))}
@@ -252,3 +236,4 @@ export default function App() {
     </div>
   );
 }
+
