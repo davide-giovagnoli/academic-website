@@ -35,8 +35,7 @@ export default function App() {
         publication.year,
         publication.title,
         publication.authors,
-        publication.venue,
-        ...(publication.tags || []),
+        publication.venue
       ]
         .filter(Boolean)
         .join(" ")
@@ -56,7 +55,6 @@ export default function App() {
         item.title,
         item.authors,
         item.venue,
-        ...(item.tags || []),
       ]
         .filter(Boolean)
         .join(" ")
@@ -70,7 +68,7 @@ export default function App() {
       <header className="header">
         <div className="container header-inner">
           <a className="monogram" href="#profile">
-            DG
+            
           </a>
 
           <nav className="desktop-nav">
@@ -191,14 +189,7 @@ export default function App() {
                     {publication.venue}
                   </p>
 
-                  {publication.tags?.length > 0 && (
-                    <div className="tags">
-                      {publication.tags.map((tag) => (
-                        <span key={tag}>{tag}</span>
-                      ))}
-                    </div>
-                  )}
-                </div>
+             
 
                 {publication.url && (
                   <a
@@ -219,13 +210,7 @@ export default function App() {
                           <p>{item.authors}</p>
                   <p className="venue">{item.venue}</p>
 
-                  {item.tags?.length > 0 && (
-                    <div className="tags">
-                      {item.tags.map((tag) => (
-                        <span key={tag}>{tag}</span>
-                      ))}
-                    </div>
-                  )}
+                  
                 </div>
 
                 {item.url && (
@@ -251,7 +236,7 @@ export default function App() {
                 Contact
               </p>
 
-              <h2>Get in touch.</h2>
+              <h2> .</h2>
             </div>
 
             <div className="contact-details">
