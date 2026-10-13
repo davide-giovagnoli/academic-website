@@ -184,7 +184,7 @@ export default function App() {
 
                 <div>
                   <h3>{publication.title}</h3>
-      Name="empty">
+                  <p className="empty">
               No publications found.
             </p>
           )}
