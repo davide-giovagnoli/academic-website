@@ -68,7 +68,7 @@ export default function App() {
       <header className="header">
         <div className="container header-inner">
           <a className="monogram" href="#profile">
-            DG
+            
           </a>
 
           <nav className="desktop-nav">
@@ -128,7 +128,7 @@ export default function App() {
                 rel="noreferrer"
               >
                 <Download size={17} />
-                Download CV
+                CV
               </a>
 
               <a
@@ -238,7 +238,7 @@ export default function App() {
                 Contact
               </p>
 
-              <h2>Get in touch.</h2>
+              <h2> .</h2>
             </div>
 
             <div className="contact-details">
