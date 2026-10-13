@@ -1,3 +1,675 @@
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f7f7f4;color:#171717;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.site-shell{min-height:100vh}.container{width:min(1120px,calc(100% - 40px));margin:auto}.header{position:sticky;top:0;z-index:20;border-bottom:1px solid rgba(0,0,0,.1);background:rgba(247,247,244,.92);backdrop-filter:blur(14px)}.header-inner{height:66px;display:flex;align-items:center;justify-content:space-between}.monogram{font-weight:700;letter-spacing:.18em;color:#171717;text-decoration:none}.desktop-nav{display:flex;gap:32px}.desktop-nav a,.mobile-nav a{color:rgba(0,0,0,.6);text-decoration:none;font-size:14px}.desktop-nav a:hover{color:#171717}.menu-button{display:none;border:0;background:none}.mobile-nav{display:none}.hero{min-height:76vh;display:grid;grid-template-columns:1.25fr .75fr;gap:64px;align-items:center;padding-top:72px;padding-bottom:72px}.eyebrow,.section-label{display:flex;align-items:center;gap:8px;color:#1f4b43;text-transform:uppercase;letter-spacing:.2em;font-size:12px;font-weight:700}.hero h1{font-size:clamp(54px,7vw,80px);line-height:.94;letter-spacing:-.06em;margin:22px 0 0;font-weight:600}.lead{max-width:690px;color:rgba(0,0,0,.6);font-size:19px;line-height:1.75;margin:28px 0}.actions{display:flex;gap:12px;flex-wrap:wrap}.button{display:inline-flex;align-items:center;gap:9px;border-radius:999px;padding:13px 23px;text-decoration:none;font-size:14px;font-weight:600}.primary{background:#1f4b43;color:#fff}.secondary{border:1px solid rgba(0,0,0,.15);color:#171717}.portrait-frame{aspect-ratio:4/5;border-radius:32px;overflow:hidden;background:#deded8;box-shadow:0 30px 80px rgba(0,0,0,.13)}.portrait-frame img{width:100%;height:100%;object-fit:cover}.research-section{background:#fff;border-top:1px solid rgba(0,0,0,.1);border-bottom:1px solid rgba(0,0,0,.1)}.research-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:50px;padding-top:80px;padding-bottom:80px}h2{font-size:34px;letter-spacing:-.035em;margin:16px 0;font-weight:600}.interest-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.interest-card{background:#f7f7f4;border:1px solid rgba(0,0,0,.1);border-radius:20px;padding:24px}.interest-card span{font-size:12px;color:rgba(0,0,0,.35)}.interest-card h3{margin:34px 0 0;font-size:18px}.publications-section{padding-top:80px;padding-bottom:80px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:24px}.search{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:999px;padding:0 16px;width:290px}.search input{border:0;outline:0;background:transparent;padding:13px 0;width:100%}.publication-list{border-top:1px solid rgba(0,0,0,.11);margin-top:32px}.publication{display:grid;grid-template-columns:90px 1fr auto;gap:20px;padding:28px 0;border-bottom:1px solid rgba(0,0,0,.11)}.year{font-size:14px;color:#1f4b43;font-weight:700}.publication h3{margin:0 0 10px;font-size:19px}.publication p{margin:5px 0;color:rgba(0,0,0,.56);font-size:14px}.venue{font-style:italic}.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.tags span{background:#e4ece8;color:#1f4b43;border-radius:999px;padding:6px 11px;font-size:12px}.external{color:#171717}.empty{text-align:center;color:rgba(0,0,0,.45)}.contact-section{background:#173a34;color:#fff}.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;padding-top:78px;padding-bottom:78px}.light{color:rgba(255,255,255,.55)}.contact-section h2{font-size:44px}.contact-details{display:flex;flex-direction:column;gap:20px;color:rgba(255,255,255,.72);font-size:14px}.contact-details a,.contact-details p{display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none;margin:0}.social-links{display:flex;gap:18px;flex-wrap:wrap}.contact-details small{margin-top:18px;color:rgba(255,255,255,.4)}@media(max-width:760px){.desktop-nav{display:none}.menu-button{display:block}.mobile-nav{display:flex;flex-direction:column;padding:10px 20px 18px;gap:18px}.hero,.research-grid,.contact-grid{grid-template-columns:1fr}.hero{padding-top:56px;gap:42px}.portrait-frame{max-width:390px}.interest-grid{grid-template-columns:1fr}.section-head{align-items:stretch;flex-direction:column}.search{width:100%}.publication{grid-template-columns:60px 1fr}.external{grid-column:2}.contact-section h2{font-size:36px}}.contact-details p {
+/* =========================================================
+   GLOBAL SETTINGS
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #f7f7f4;
+  color: #171717;
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+.site-shell {
+  min-height: 100vh;
+}
+
+.container {
+  width: min(1120px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   HEADER AND NAVIGATION
+   ========================================================= */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+
+  background: rgba(247, 247, 244, 0.92);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+  backdrop-filter: blur(14px);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 66px;
+}
+
+.monogram {
+  color: #171717;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+}
+
+.desktop-nav {
+  display: flex;
+  gap: 32px;
+}
+
+.desktop-nav a,
+.mobile-nav a {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.desktop-nav a:hover,
+.mobile-nav a:hover {
+  color: #171717;
+}
+
+.menu-button {
+  display: none;
+
+  padding: 5px;
+  color: #171717;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.mobile-nav {
+  display: none;
+}
+
+
+/* =========================================================
+   PROFILE / HERO SECTION
+   ========================================================= */
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  align-items: center;
+  gap: 64px;
+
+  min-height: 76vh;
+  padding-top: 72px;
+  padding-bottom: 72px;
+}
+
+.eyebrow,
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin: 0;
+  color: #1f4b43;
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin: 22px 0 0;
+
+  font-size: clamp(54px, 7vw, 80px);
+  font-weight: 600;
+  letter-spacing: -0.06em;
+  line-height: 0.94;
+}
+
+/*
+  white-space: pre-line makes \\n in data.js
+  appear as actual line breaks on the website.
+*/
+
+.lead {
+  max-width: 690px;
+  margin: 28px 0;
+
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 19px;
+  line-height: 1.75;
+
   white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 13px 23px;
+  border-radius: 999px;
+
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.primary {
+  color: #ffffff;
+  background: #1f4b43;
+}
+
+.primary:hover {
+  background: #173a34;
+}
+
+.secondary {
+  color: #171717;
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.secondary:hover {
+  border-color: rgba(0, 0, 0, 0.35);
+}
+
+.portrait-frame {
+  overflow: hidden;
+
+  aspect-ratio: 4 / 5;
+  background: #deded8;
+  border-radius: 32px;
+
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.13);
+}
+
+.portrait-frame img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* =========================================================
+   GENERIC SECTION TITLES
+   ========================================================= */
+
+h2 {
+  margin: 16px 0;
+
+  font-size: 34px;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+
+  overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   RESEARCH SECTION
+   Remove this part if Research is no longer present in App.jsx.
+   Leaving it here causes no problems.
+   ========================================================= */
+
+.research-section {
+  background: #ffffff;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.research-grid {
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr;
+  gap: 50px;
+
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.interest-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.interest-card {
+  padding: 24px;
+
+  background: #f7f7f4;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+}
+
+.interest-card span {
+  color: rgba(0, 0, 0, 0.35);
+  font-size: 12px;
+}
+
+.interest-card h3 {
+  margin: 34px 0 0;
+  font-size: 18px;
+}
+
+
+/* =========================================================
+   PUBLICATIONS
+   ========================================================= */
+
+.publications-section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  width: 290px;
+  padding: 0 16px;
+
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 999px;
+}
+
+.search input {
+  width: 100%;
+  padding: 13px 0;
+
+  background: transparent;
+  border: 0;
+  outline: 0;
+
+  color: #171717;
+  font: inherit;
+}
+
+.search input::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.publication-list {
+  margin-top: 32px;
+  border-top: 1px solid rgba(0, 0, 0, 0.11);
+}
+
+.publication {
+  display: grid;
+  grid-template-columns: 90px minmax(0, 1fr) auto;
+  gap: 20px;
+
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.11);
+}
+
+.year {
+  color: #1f4b43;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+
+  overflow-wrap: anywhere;
+}
+
+.publication h3 {
+  margin: 0 0 10px;
+
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.4;
+
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.publication p {
+  margin: 5px 0;
+
+  color: rgba(0, 0, 0, 0.56);
+  font-size: 14px;
+  line-height: 1.55;
+
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+.venue {
+  font-style: italic;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  margin-top: 16px;
+}
+
+.tags span {
+  padding: 6px 11px;
+
+  color: #1f4b43;
+  background: #e4ece8;
+  border-radius: 999px;
+
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.external {
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  color: #171717;
+  text-decoration: none;
+}
+
+.external:hover {
+  color: #1f4b43;
+}
+
+.empty {
+  padding: 28px 0;
+  color: rgba(0, 0, 0, 0.45);
+  text-align: center;
+}
+
+
+/* =========================================================
+   SURVEYS AND BOOKS
+   ========================================================= */
+
+/*
+  This creates a clear separation between Publications
+  and Surveys and Books.
+*/
+
+.subsection-head {
+  max-width: 100%;
+  margin-top: 75px;
+}
+
+/*
+  The heading can wrap naturally if the screen is narrow.
+*/
+
+.subsection-head h2 {
+  max-width: 100%;
+  margin-top: 16px;
+
+  line-height: 1.15;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+/*
+  If you want "Surveys and Books" to always appear
+  on two lines, use a <br /> in App.jsx instead.
+*/
+
+.subsection-head + .publication-list {
+  margin-top: 32px;
+}
+
+
+/* =========================================================
+   CONTACT FOOTER
+   ========================================================= */
+
+.contact-section {
+  color: #ffffff;
+  background: #173a34;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+
+  padding-top: 45px;
+  padding-bottom: 45px;
+}
+
+.section-label.light {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.contact-section h2 {
+  margin-top: 16px;
+  margin-bottom: 0;
+
+  font-size: 36px;
+  line-height: 1.15;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 14px;
+}
+
+.contact-details a,
+.contact-details p {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+
+  margin: 0;
+  color: inherit;
+  line-height: 1.6;
+  text-decoration: none;
+}
+
+.contact-details a:hover {
+  color: #ffffff;
+}
+
+/*
+  This makes \\n in the affiliation/address inside data.js
+  appear as a real line break.
+*/
+
+.contact-details p {
+  white-space: pre-line;
+}
+
+.contact-details svg {
+  flex: 0 0 auto;
+  margin-top: 3px;
+}
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 22px;
+}
+
+.social-links a {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.social-links a:hover {
+  color: #ffffff;
+}
+
+.contact-details small {
+  margin-top: 12px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+
+/* =========================================================
+   TABLET AND MOBILE
+   ========================================================= */
+
+@media (max-width: 760px) {
+
+  .container {
+    width: min(100% - 32px, 1120px);
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .menu-button {
+    display: block;
+  }
+
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    padding: 10px 20px 18px;
+  }
+
+  .hero,
+  .research-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    min-height: auto;
+    gap: 42px;
+
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+
+  .hero h1 {
+    font-size: clamp(48px, 15vw, 66px);
+  }
+
+  .lead {
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  .portrait-frame {
+    width: 100%;
+    max-width: 390px;
+  }
+
+  .interest-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .publications-section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .section-head {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search {
+    width: 100%;
+  }
+
+  .publication {
+    grid-template-columns: 60px minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .external {
+    grid-column: 2;
+    justify-content: flex-start;
+  }
+
+  .subsection-head {
+    margin-top: 60px;
+  }
+
+  .contact-grid {
+    gap: 32px;
+
+    padding-top: 42px;
+    padding-bottom: 42px;
+  }
+
+  .contact-section h2 {
+    font-size: 32px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL SCREENS
+   ========================================================= */
+
+@media (max-width: 440px) {
+
+  .hero h1 {
+    font-size: 48px;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .button {
+    justify-content: center;
+  }
+
+  .publication {
+    grid-template-columns: 1fr;
+  }
+
+  .year,
+  .external {
+    grid-column: 1;
+  }
+
+  .publication h3 {
+    font-size: 18px;
+  }
+
+  .subsection-head h2 {
+    font-size: 30px;
+  }
 }
