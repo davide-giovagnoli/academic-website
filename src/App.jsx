@@ -27,6 +27,7 @@ export default function App() {
 
   const filtered = useMemo(() => {
     const q = query.toLowerCase().trim();
+
     if (!q) return publications;
 
     return publications.filter((publication) =>
@@ -35,6 +36,7 @@ export default function App() {
         publication.title,
         publication.authors,
         publication.venue,
+        ...(publication.tags || []),
       ]
         .filter(Boolean)
         .join(" ")
@@ -42,26 +44,27 @@ export default function App() {
         .includes(q)
     );
   }, [query]);
-  
-const filteredSurveysAndBooks = useMemo(() => {
-  const q = query.toLowerCase().trim();
 
-  if (!q) return surveysAndBooks;
+  const filteredSurveysAndBooks = useMemo(() => {
+    const q = query.toLowerCase().trim();
 
-  return surveysAndBooks.filter((item) =>
-    [
-      item.year,
-      item.title,
-      item.authors,
-      item.venue,
-      ...item.tags,
-    ]
-      .join(" ")
-      .toLowerCase()
-      .includes(q)
-  );
-}, [query]);
-  
+    if (!q) return surveysAndBooks;
+
+    return surveysAndBooks.filter((item) =>
+      [
+        item.year,
+        item.title,
+        item.authors,
+        item.venue,
+        ...(item.tags || []),
+      ]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase()
+        .includes(q)
+    );
+  }, [query]);
+
   return (
     <div className="site-shell">
       <header className="header">
@@ -130,7 +133,10 @@ const filteredSurveysAndBooks = useMemo(() => {
                 Download CV
               </a>
 
-              <a className="button secondary" href={`mailto:${profile.email}`}>
+              <a
+                className="button secondary"
+                href={`mailto:${profile.email}`}
+              >
                 <Mail size={17} />
                 Contact me
               </a>
@@ -138,11 +144,17 @@ const filteredSurveysAndBooks = useMemo(() => {
           </div>
 
           <div className="portrait-frame">
-            <img src={profile.photo} alt={`Portrait of ${profile.name}`} />
+            <img
+              src={profile.photo}
+              alt={`Portrait of ${profile.name}`}
+            />
           </div>
         </section>
 
-        <section id="publications" className="container publications-section">
+        <section
+          id="publications"
+          className="container publications-section"
+        >
           <div className="section-head">
             <div>
               <p className="section-label">Research output</p>
@@ -151,12 +163,13 @@ const filteredSurveysAndBooks = useMemo(() => {
 
             <label className="search">
               <Search size={17} />
+
               <input
                 type="search"
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
-                placeholder="Search publications"
-                aria-label="Search publications"
+                placeholder="Search research output"
+                aria-label="Search research output"
               />
             </label>
           </div>
@@ -167,12 +180,24 @@ const filteredSurveysAndBooks = useMemo(() => {
                 className="publication"
                 key={`${publication.title}-${index}`}
               >
-                <div className="year">{publication.year}</div>
+                <div className="year">
+                  {publication.year}
+                </div>
 
                 <div>
                   <h3>{publication.title}</h3>
                   <p>{publication.authors}</p>
-                  <p className="venue">{publication.venue}</p>
+                  <p className="venue">
+                    {publication.venue}
+                  </p>
+
+                  {publication.tags?.length > 0 && (
+                    <div className="tags">
+                      {publication.tags.map((tag) => (
+                        <span key={tag}>{tag}</span>
+                      ))}
+                    </div>
+                  )}
                 </div>
 
                 {publication.url && (
@@ -191,94 +216,59 @@ const filteredSurveysAndBooks = useMemo(() => {
           </div>
 
           {filtered.length === 0 && (
-            <p className="empty">No publications found.</p>
+                          <p>{item.authors}</p>
+                  <p className="venue">{item.venue}</p>
+
+                  {item.tags?.length > 0 && (
+                    <div className="tags">
+                      {item.tags.map((tag) => (
+                        <span key={tag}>{tag}</span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {item.url && (
+                  {item.url}
+                    <ExternalLink size={19} />
+                  </a>
+                )}
+              </article>
+            ))}
+          </div>
+
+          {filteredSurveysAndBooks.length === 0 && (
+            <p className="empty">
+              No surveys or books found.
+            </p>
           )}
         </section>
 
-        <div className="subsection-head">
-  <p className="section-label">Expository work</p>
-  <h2>Surveys and Books</h2>
-</div>
-
-<div className="publication-list">
-  {filteredSurveysAndBooks.map((item, index) => (
-    <article
-      className="publication"
-      key={`${item.title}-${index}`}
-    >
-      <div className="year">
-        {item.year}
-      </div>
-
-      <div>
-        <h3>{item.title}</h3>
-
-        <p>
-          {item.authors}
-        </p>
-
-        <p className="venue">
-          {item.venue}
-        </p>
-
-        <div className="tags">
-          {item.tags.map((tag) => (
-            <span key={tag}>
-              {tag}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {item.url && (
-        <a
-          className="external"
-          href={item.url}
-          target="_blank"
-          rel="noreferrer"
-          aria-label={`Open ${item.title}`}
-        >
-          <ExternalLink size={19} />
-        </a>
-      )}
-    </article>
-  ))}
-</div>
-
-{!filteredSurveysAndBooks.length && (
-  <p className="empty">
-    No surveys or books found.
-  </p>
-)}
-`
-       
         <section id="contact" className="contact-section">
           <div className="container contact-grid">
             <div>
-              <p className="section-label light">Contact</p>
+              <p className="section-label light">
+                Contact
+              </p>
+
               <h2>Get in touch.</h2>
             </div>
 
             <div className="contact-details">
-              <a href={`mailto:${profile.email}`}>
+              {`mailto:${profile.email}`}
                 <Mail size={17} />
                 {profile.email}
               </a>
 
               <p>
                 <MapPin size={17} />
-                {profile.affiliation}
+                <span>{profile.affiliation}</span>
               </p>
 
               {profile.links?.length > 0 && (
                 <div className="social-links">
                   {profile.links.map((link) => (
-                    <a
-                      key={link.label}
-                      href={link.url}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
+                    {link.url}
                       {link.label}
                     </a>
                   ))}
