@@ -35,7 +35,7 @@ export default function App() {
         publication.year,
         publication.title,
         publication.authors,
-        publication.venue
+        publication.venue,
       ]
         .filter(Boolean)
         .join(" ")
@@ -68,7 +68,7 @@ export default function App() {
       <header className="header">
         <div className="container header-inner">
           <a className="monogram" href="#profile">
-            
+            DG
           </a>
 
           <nav className="desktop-nav">
