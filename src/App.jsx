@@ -195,7 +195,7 @@ const filteredSurveysAndBooks = useMemo(() => {
           )}
         </section>
 
-<div className="subsection-head">
+        <div className="subsection-head">
   <p className="section-label">Expository work</p>
   <h2>Surveys and Books</h2>
 </div>
@@ -206,21 +206,52 @@ const filteredSurveysAndBooks = useMemo(() => {
       className="publication"
       key={`${item.title}-${index}`}
     >
-      <div className="year">{item.year}</div>
+      <div className="year">
+        {item.year}
+      </div>
 
       <div>
         <h3>{item.title}</h3>
-        <p>{item.authors}</p>
-        <p className="venue">{item.venue}</p>
+
+        <p>
+          {item.authors}
+        </p>
+
+        <p className="venue">
+          {item.venue}
+        </p>
 
         <div className="tags">
           {item.tags.map((tag) => (
-            <span key={tag}>{tag}</span>
+            <span key={tag}>
+              {tag}
+            </span>
           ))}
         </div>
       </div>
 
-        
+      {item.url && (
+        <a
+          className="external"
+          href={item.url}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={`Open ${item.title}`}
+        >
+          <ExternalLink size={19} />
+        </a>
+      )}
+    </article>
+  ))}
+</div>
+
+{!filteredSurveysAndBooks.length && (
+  <p className="empty">
+    No surveys or books found.
+  </p>
+)}
+`
+       
         <section id="contact" className="contact-section">
           <div className="container contact-grid">
             <div>
