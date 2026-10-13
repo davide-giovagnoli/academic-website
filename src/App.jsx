@@ -224,11 +224,11 @@ export default function App() {
             ))}
           </div>
 
-          {filteredSurveysAndBooks.length === 0 && (
-            <p className="empty">
-              No surveys or books found.
-            </p>
-          )}
+           {filteredSurveysAndBooks.length === 0 && (
+              <p className="empty">
+                No surveys or books found.
+              </p>
+              )}
         </section>
 
         <section id="contact" className="contact-section">
