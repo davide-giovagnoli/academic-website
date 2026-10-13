@@ -130,7 +130,8 @@ export const publications = [
       "Annali di Matematica Pura ed Applicata 204, 427–445 (2025)",
     url: "https://doi.org/10.1007/s10231-024-01490-8",
   },
-
+];
+export const surveysAndBooks = [
   {
     year: "2025",
     title:
